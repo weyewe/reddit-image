@@ -13,5 +13,22 @@
 
 <%= yield %>
 
+
+<script type='text/javascript'>
+jQuery(document).ready(function(){
+	jQuery(document).keydown(function (e){ 
+		// alert("boom boom bomo");
+		// console.log("keypress shite");
+			var keyCode = e.keyCode; 
+			
+			var e      = document.getElementById("post-list-container");
+			var scope = angular.element(e).scope();
+			// update the model with a wrap in $apply(fn) which will refresh the view for us
+			scope.$apply(function() {
+				scope.updateSelectedPostFromKeyboard(keyCode);
+			});
+	});
+});
+</script
 </body>
 </html>

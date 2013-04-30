@@ -16,6 +16,7 @@
   </div>
 
 	<div id="post-viewer-container" ng-controller="PostViewerCtrl" style="text-align:center;" >
+		<h2>{{selectedPost.title}}</h2>
 		<h3 ng-show='noImages()'>No IMAGES</h3>
     <ul>
       <li ng-repeat="picture in pictureArray" >

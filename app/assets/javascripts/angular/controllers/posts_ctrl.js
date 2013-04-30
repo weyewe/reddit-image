@@ -1,19 +1,4 @@
-// # app/assets/javascripts/angular/controllers/episodes_ctrl.js.coffee
-// 
-// @EpisodesCtrl = @app.controller 'EpisodesCtrl', [
-// 	"$scope", "$http", ($scope, $http) ->
-//   $scope.episodes = []
-// 
-//   loadEpisodes = ->
-//     $http.get("/episodes.json").success((data, status, headers, config) ->
-//       angular.forEach data, (value) ->
-//         $scope.episodes.push value.episode
-//     )
-// 
-//   loadEpisodes()
-// 	
-// 	
-// ]
+
 
 angular.module( 'AngularCasts').controller('PostsCtrl', [ '$scope', '$http', '$resource', '$rootScope',
  			function($scope, $http, $resource, $rootScope){
@@ -34,6 +19,35 @@ angular.module( 'AngularCasts').controller('PostsCtrl', [ '$scope', '$http', '$r
 			loadPosts( args.subReddit );
 		}
 	});
+	
+	$scope.$on('my:keyup', function(event, keyEvent) {
+	  alert("Banzai");
+	});
+	
+	$scope.updateSelectedPostFromKeyboard = function(keyCode){
+		var arrowUp = 38; 
+		var arrowDown = 40; 
+		
+		// fruits.indexOf("Apple");
+		
+		
+		if(($scope.selectedPost !== null) && ($scope.posts !== null )) {
+			var currentIndex = $scope.posts.indexOf( $scope.selectedPost );
+			var postsLength = $scope.posts.length 
+			
+			if(( keyCode === arrowDown ) && ( currentIndex < postsLength )){
+				$scope.selectedPost = $scope.posts[ currentIndex +  1];
+			}
+			
+			if(( keyCode === arrowUp ) && ( currentIndex > 0  )){
+				$scope.selectedPost = $scope.posts[ currentIndex -  1];
+			}
+			
+			$scope.showPictures( $scope.selectedPost );
+	 
+		}
+
+	};
 	
 	
 	$scope.showPictures = function( post ){
