@@ -16,6 +16,7 @@
   </div>
 
 	<div id="post-viewer-container" ng-controller="PostViewerCtrl" style="text-align:center;" >
+		<h3 ng-show='noImages()'>No IMAGES</h3>
     <ul>
       <li ng-repeat="picture in pictureArray" >
   			<img style='width:50%;' ng-src="{{picture}}" />
@@ -24,6 +25,7 @@
   </div>
 
   <div id="post-list-container" ng-controller="PostsCtrl" >
+	
     <!-- This is where we are showing the shite -->
 		<ul>
       <li ng-repeat="post in posts" >
