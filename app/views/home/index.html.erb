@@ -5,15 +5,59 @@
 </header>
 
 <div >
-  <div id="subreddit-list-container" ng-controller="SubRedditsCtrl" >
-    <ul>
-      <li ng-repeat="subReddit in subReddits" >
-        <h3  ng-click='showPosts(subReddit)' ng-class='isSelected(subReddit)'>
-					{{subReddit.name}}  
-				</h3>
-      </li>
-    </ul>
-  </div>
+	<div ng-controller="SubRedditsCtrl">
+		<table id='subreddit-control'>
+			<tr>
+				<td ng-click='showForm()'>
+					Add
+				</td>
+		
+				<td>
+					<span ng-show='selectedSubReddit' ng-click='destroy()'>Delete</span>
+				</td>
+			</tr>
+		</table>
+	
+	  <div  ng-hide="subRedditCreateMode" id="subreddit-list-container"  >
+		
+	    <ul>
+	      <li ng-repeat="subReddit in subReddits" >
+	        <h3  ng-click='showPosts(subReddit)' ng-class='isSelected(subReddit)'>
+						{{subReddit.name}}  
+					</h3>
+	      </li>
+	    </ul>
+	  </div>
+	
+		<div  ng-show="subRedditCreateMode" id="subreddit-list-container"  >
+		
+	   	<form name="employeeForm" ng-submit="submit()">
+			  <fieldset>
+			 
+			    <label>
+			      <span>SubRedditName:</span>
+			      <input
+			        type="text"
+			        ng-model="newSubReddit.name"
+			        required
+			        autofocus
+			        />
+			    </label> 
+
+			    
+
+			    <div class="formFooter">
+			    
+			      <button type="submit" class="main-button" 
+								ng-click="createSubReddit(newSubReddit)" >Add</button>
+			      <p  ng-click="cancelForm()">Cancel</p>
+			    </div>
+
+			  </fieldset>
+			</form>
+	  </div>
+	
+	</div>
 
 	<div id="post-viewer-container" ng-controller="PostViewerCtrl" style="text-align:center;" >
 		<h2>{{selectedPost.title}}</h2>

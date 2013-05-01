@@ -1,5 +1,5 @@
 
-angular.module( 'AngularCasts').controller('PostViewerCtrl', [ '$scope', '$http', '$resource', 
+app.controller('PostViewerCtrl', [ '$scope', '$http', '$resource', 
  			function($scope, $http, $resource, $rootScope){
 	$scope.pictureArray = null ;
 	$scope.selectedPost = null  ;

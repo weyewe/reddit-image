@@ -15,7 +15,7 @@
 // 	
 // ]
 
-angular.module( 'AngularCasts').controller('EpisodesCtrl', [ '$scope', '$http', function($scope, $http){
+app.controller('EpisodesCtrl', [ '$scope', '$http', function($scope, $http){
 	$scope.episodes = [] ;
 	$scope.selectedEpisode = null ;  
 	
@@ -24,7 +24,7 @@ angular.module( 'AngularCasts').controller('EpisodesCtrl', [ '$scope', '$http', 
 	$scope.showEpisode = function(episode){
 		// console.log(" showEpisode is called");
 		$scope.selectedEpisode = episode;
-		console.log("The video_url: " + episode.video_url) ;
+		// console.log("The video_url: " + episode.video_url) ;
 		loadVideo(episode);
 	};
 	

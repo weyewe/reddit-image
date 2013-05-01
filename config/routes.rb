@@ -9,6 +9,8 @@ AngularCasts::Application.routes.draw do
   
   match 'extract_images' => 'home#extract_images', :as => :extract_images
   
+  resources :sub_reddits 
+  
 
   # scope :api do
   #   get "/screencasts(.:format)" => "screencasts#index"

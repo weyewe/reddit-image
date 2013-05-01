@@ -1,6 +1,6 @@
 
 
-angular.module( 'AngularCasts').controller('PostsCtrl', [ '$scope', '$http', '$resource', '$rootScope',
+app.controller('PostsCtrl', [ '$scope', '$http', '$resource', '$rootScope',
  			function($scope, $http, $resource, $rootScope){
 	$scope.posts = [] ;
 	$scope.selectedSubReddit = null ;  
@@ -9,6 +9,7 @@ angular.module( 'AngularCasts').controller('PostsCtrl', [ '$scope', '$http', '$r
 	
 	$scope.$on('subRedditSelected', function (event, args) {
 		if( $scope.selectedSubReddit !== args.subReddit ){
+			
 			if( $scope.posts ){
 				delete $scope.posts;
 				$scope.posts = null;
@@ -54,11 +55,11 @@ angular.module( 'AngularCasts').controller('PostsCtrl', [ '$scope', '$http', '$r
 		var pictureArray = [];
 		$scope.selectedPost = post; 
 		if( isNormalImageLink(post.url) === true ){
-			console.log("It was normal imge link");
+			// console.log("It was normal imge link");
 			pictureArray.push( post.url );
 			$rootScope.$broadcast('showPictures', { pictures: pictureArray, post: post  });
 		}else{
-			console.log("Gonna extract images");
+			// console.log("Gonna extract images");
 			$http.post("/extract_images.json", {
 				url : post.url 
 			}).success( function(data,status,headers, config){
@@ -66,8 +67,8 @@ angular.module( 'AngularCasts').controller('PostsCtrl', [ '$scope', '$http', '$r
 					pictureArray.push( value );
 				});
 				
-				console.log("the pictureArray: " );
-				console.log(pictureArray);
+				// console.log("the pictureArray: " );
+				// console.log(pictureArray);
 				$rootScope.$broadcast('showPictures', { pictures: pictureArray, post: post });
 			});
 		}
@@ -110,19 +111,19 @@ angular.module( 'AngularCasts').controller('PostsCtrl', [ '$scope', '$http', '$r
 		
 		$http.jsonp(	finalUrl ).success( function(result,status,headers, config){
 			// console.log("The data: " + data);
-			console.log( result ) ;
-			console.log("The success case");
+			// console.log( result ) ;
+			// console.log("The success case");
 			angular.forEach( result.data.children, function(value){
 				// $scope.episodes.push( value.episode ) ;
-				console.log("the value")
-				console.log( value.data  );
+				// console.log("the value")
+				// console.log( value.data  );
 				$scope.posts.push( value.data );
 				// console.log( value ) ;
 			});
-			console.log("Total posts length: " + $scope.posts.length );
+			// console.log("Total posts length: " + $scope.posts.length );
 			
 			angular.forEach( $scope.posts, function(post){
-				console.log( post ) ;
+				// console.log( post ) ;
 			});
 		});
 	};

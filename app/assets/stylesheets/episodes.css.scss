@@ -19,11 +19,24 @@ header {
   padding-left: 15px;
 }
 
+
+#subreddit-control {
+	background-color: rgb(250,250,250);
+	position: absolute;
+	width: 15%;
+	top: 37px;
+	left: 0;
+	bottom: 0;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	text-align: center;
+}
+
 #subreddit-list-container {
   background-color: rgb(250,250,250);
   position: absolute;
   width: 15%;
-  top: 37px;
+  top: 57px;
   left: 0;
   bottom: 0;
   overflow: auto;
@@ -31,6 +44,8 @@ header {
   ul {
     margin: 0px;
     list-style: none;
+		# position : relative;
+		# top : 50px;
     padding: 0px;
     li {
       cursor: pointer;

@@ -32,12 +32,14 @@ class SubReddit < ActiveRecord::Base
   
   def delete_object
     
-    if self.favourite_posts.count != 0 
-      self.is_deleted = true 
-      self.save
-    else
-      self.destroy 
-    end
+    self.destroy 
+    
+    # if self.favourite_posts.count != 0 
+    #   self.is_deleted = true 
+    #   self.save
+    # else
+    #   self.destroy 
+    # end
     
   end
 end
